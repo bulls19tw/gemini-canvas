@@ -26,7 +26,7 @@ body{font-family:'Noto Sans TC',sans-serif;overflow-x:hidden}.glass-scroll::-web
 <div class="flex justify-center">
 <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 hover:bg-white/60 border border-white/50 transition-all duration-300 shadow-sm group" id="musicBtn" onclick="toggleMusic()">
 <span class="material-symbols-outlined text-gray-700 group-hover:scale-110 transition-transform" id="musicIcon">music_off</span>
-<span class="text-sm font-medium text-gray-700" id="musicText">背景音樂</span>
+<span class="text-sm font-medium text-gray-700" id="musicText">播放輕音樂</span>
 </button>
 </div>
 <div class="flex flex-col gap-4 w-full">
@@ -85,9 +85,4 @@ function handleLinkClick(){if(isPlaying){stopMusicActions()}}
 function toggleDropdown(id){const content=document.getElementById(`dropdown-${id}`);const arrow=document.getElementById(`arrow-${id}`);const allContents=document.querySelectorAll('.dropdown-content');const allArrows=document.querySelectorAll('[id^="arrow-"]');const isOpen=content.classList.contains('open');allContents.forEach(el=>el.classList.remove('open'));allArrows.forEach(el=>el.style.transform='rotate(0deg)');if(!isOpen){content.classList.add('open');arrow.style.transform='rotate(180deg)'}}
 </script>
 </body>
-
 </html>
-
-
-
-
