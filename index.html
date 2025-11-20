@@ -26,7 +26,7 @@ body{font-family:'Noto Sans TC',sans-serif;overflow-x:hidden}.glass-scroll::-web
 <div class="flex justify-center">
 <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 hover:bg-white/60 border border-white/50 transition-all duration-300 shadow-sm group" id="musicBtn" onclick="toggleMusic()">
 <span class="material-symbols-outlined text-gray-700 group-hover:scale-110 transition-transform" id="musicIcon">music_off</span>
-<span class="text-sm font-medium text-gray-700" id="musicText">播放輕音樂</span>
+<span class="text-sm font-medium text-gray-700" id="musicText">播放背景音樂</span>
 </button>
 </div>
 <div class="flex flex-col gap-4 w-full">
@@ -79,10 +79,11 @@ body{font-family:'Noto Sans TC',sans-serif;overflow-x:hidden}.glass-scroll::-web
 </main>
 <script>
 let isPlaying=false;let synth=null;let loop=null;async function initAudio(){if(!synth){await Tone.start();synth=new Tone.PolySynth(Tone.Synth,{oscillator:{type:"sine"},envelope:{attack:2,decay:1,sustain:0.3,release:4},volume:-10}).toDestination();const chords=[["C4","E4","G4"],["D4","F4","A4"],["E4","G4","B4"],["F4","A4","C5"]];let index=0;loop=new Tone.Loop(time=>{synth.triggerAttackRelease(chords[index%chords.length],"4n",time);index++},"2n");Tone.Transport.bpm.value=60}}
-async function toggleMusic(){const icon=document.getElementById('musicIcon');const text=document.getElementById('musicText');if(!isPlaying){try{await initAudio();Tone.Transport.start();if(loop)loop.start(0);isPlaying=true;icon.innerText='music_note';text.innerText='暫停輕音樂';icon.classList.add('text-pink-600')}catch(e){console.error("Audio failed to start",e)}}else{stopMusicActions()}}
-function stopMusicActions(){if(isPlaying){Tone.Transport.stop();if(loop)loop.stop();if(synth)synth.releaseAll();isPlaying=false;const icon=document.getElementById('musicIcon');const text=document.getElementById('musicText');icon.innerText='music_off';text.innerText='播放輕音樂';icon.classList.remove('text-pink-600')}}
+async function toggleMusic(){const icon=document.getElementById('musicIcon');const text=document.getElementById('musicText');if(!isPlaying){try{await initAudio();Tone.Transport.start();if(loop)loop.start(0);isPlaying=true;icon.innerText='music_note';text.innerText='暫停背景音樂';icon.classList.add('text-pink-600')}catch(e){console.error("Audio failed to start",e)}}else{stopMusicActions()}}
+function stopMusicActions(){if(isPlaying){Tone.Transport.stop();if(loop)loop.stop();if(synth)synth.releaseAll();isPlaying=false;const icon=document.getElementById('musicIcon');const text=document.getElementById('musicText');icon.innerText='music_off';text.innerText='播放背景音樂';icon.classList.remove('text-pink-600')}}
 function handleLinkClick(){if(isPlaying){stopMusicActions()}}
 function toggleDropdown(id){const content=document.getElementById(`dropdown-${id}`);const arrow=document.getElementById(`arrow-${id}`);const allContents=document.querySelectorAll('.dropdown-content');const allArrows=document.querySelectorAll('[id^="arrow-"]');const isOpen=content.classList.contains('open');allContents.forEach(el=>el.classList.remove('open'));allArrows.forEach(el=>el.style.transform='rotate(0deg)');if(!isOpen){content.classList.add('open');arrow.style.transform='rotate(180deg)'}}
 </script>
 </body>
 </html>
+
