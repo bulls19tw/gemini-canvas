@@ -90,7 +90,7 @@ body{font-family:'Noto Sans TC',sans-serif;overflow-x:hidden}.glass-scroll::-web
 <div class="w-full h-px bg-gradient-to-r from-transparent via-gray-400/30 to-transparent"></div>
 <footer class="text-center text-xs text-gray-600 space-y-1">
 <p>Copyright © 2025 阿信的Gemini Canvas實驗室</p>
-<p>All Rights Reserved. Ver1141120-5</p>
+<p>All Rights Reserved. Ver1141120-6</p>
 </footer>
 </div>
 </main>
@@ -100,31 +100,32 @@ async function toggleMusic(){const icon=document.getElementById('musicIcon');con
 function stopMusicActions(){if(isPlaying){Tone.Transport.stop();if(loop)loop.stop();if(synth)synth.releaseAll();isPlaying=false;const icon=document.getElementById('musicIcon');const text=document.getElementById('musicText');icon.innerText='music_off';text.innerText='播放背景音樂';icon.classList.remove('text-pink-600')}}
 function toggleDropdown(id){const content=document.getElementById(`dropdown-${id}`);const arrow=document.getElementById(`arrow-${id}`);const allContents=document.querySelectorAll('.dropdown-content');const allArrows=document.querySelectorAll('[id^="arrow-"]');const isOpen=content.classList.contains('open');allContents.forEach(el=>el.classList.remove('open'));allArrows.forEach(el=>el.style.transform='rotate(0deg)');if(!isOpen){content.classList.add('open');arrow.style.transform='rotate(180deg)'}}
 
-// 連結開啟邏輯：包含 LINE 強制外連 與 FB 標準開啟
+// 連結開啟邏輯：針對 FB/IG 改用「原地跳轉」策略
 function openLink(event, url) {
-    event.preventDefault(); // 阻止預設行為
+    event.preventDefault(); 
     
-    // 停止音樂
     if(isPlaying){stopMusicActions();}
 
     const ua = navigator.userAgent;
     
-    // 1. 針對 LINE 瀏覽器：強制加上參數跳轉到 Chrome/Safari
+    // 1. LINE: 強制外連 (維持不變)
     if (ua.includes("Line")) {
         if (url.includes("?")) {
             url += "&openExternalBrowser=1";
         } else {
             url += "?openExternalBrowser=1";
         }
+        window.open(url, '_blank', 'noopener,noreferrer');
     }
-    // 2. 針對 Facebook / Instagram：它們不支援強制跳轉，但我們記錄下來，並使用標準新視窗開啟
+    // 2. Facebook / Instagram: 改用「當前頁面跳轉」
+    // 因為 FB 會阻擋 window.open (彈窗)，但不會阻擋 location.href
     else if (ua.includes("FBAN") || ua.includes("FBAV") || ua.includes("Instagram")) {
-        // FB 內建瀏覽器通常會攔截 window.open，但這是目前唯一可行的方法
-        console.log("User is on Facebook/Instagram, attempting window.open");
+        window.location.href = url; 
     }
-
-    // 統一使用 JavaScript 開啟新視窗 (相容性最高)
-    window.open(url, '_blank', 'noopener,noreferrer');
+    // 3. 其他正常瀏覽器: 開新視窗
+    else {
+        window.open(url, '_blank', 'noopener,noreferrer');
+    }
 }
 </script>
 </body>
