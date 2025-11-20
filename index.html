@@ -53,8 +53,8 @@ body{font-family:'Noto Sans TC',sans-serif;overflow-x:hidden}.glass-scroll::-web
 <span class="material-symbols-outlined text-gray-600 transition-transform duration-300" id="arrow-edu">expand_more</span>
 </button>
 <div class="dropdown-content flex flex-col gap-2 mt-2 ml-2 border-l-2 border-white/30 pl-4" id="dropdown-edu">
-<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800" href="https://g.co/gemini/share/ec047d04a0dd" target="_blank" onclick="handleLinkClick()"><span class="material-symbols-outlined text-sm opacity-70">directions_car</span>英語單字賽車</a>
-<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800" href="https://g.co/gemini/share/a7daaf74be63" target="_blank" onclick="handleLinkClick()"><span class="material-symbols-outlined text-sm opacity-70">public</span>9x9地球保衛戰</a>
+<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/ec047d04a0dd')"><span class="material-symbols-outlined text-sm opacity-70">directions_car</span>英語單字賽車</a>
+<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/a7daaf74be63')"><span class="material-symbols-outlined text-sm opacity-70">public</span>9x9地球保衛戰</a>
 </div>
 </div>
 
@@ -67,7 +67,7 @@ body{font-family:'Noto Sans TC',sans-serif;overflow-x:hidden}.glass-scroll::-web
 <span class="material-symbols-outlined text-gray-600 transition-transform duration-300" id="arrow-life">expand_more</span>
 </button>
 <div class="dropdown-content flex flex-col gap-2 mt-2 ml-2 border-l-2 border-white/30 pl-4" id="dropdown-life">
-<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800" href="https://g.co/gemini/share/3b0f849c3d1b" target="_blank" onclick="handleLinkClick()"><span class="material-symbols-outlined text-sm opacity-70">casino</span>要吃什麼？轉盤</a>
+<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/3b0f849c3d1b')"><span class="material-symbols-outlined text-sm opacity-70">casino</span>要吃什麼？轉盤</a>
 </div>
 </div>
 
@@ -80,9 +80,9 @@ body{font-family:'Noto Sans TC',sans-serif;overflow-x:hidden}.glass-scroll::-web
 <span class="material-symbols-outlined text-gray-600 transition-transform duration-300" id="arrow-games">expand_more</span>
 </button>
 <div class="dropdown-content flex flex-col gap-2 mt-2 ml-2 border-l-2 border-white/30 pl-4" id="dropdown-games">
-<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800" href="https://g.co/gemini/share/5361b0b4f941" target="_blank" onclick="handleLinkClick()"><span class="material-symbols-outlined text-sm opacity-70">circle</span>小精靈 (Pac-Man)</a>
-<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800" href="https://g.co/gemini/share/6643cce876ca" target="_blank" onclick="handleLinkClick()"><span class="material-symbols-outlined text-sm opacity-70">close</span>圈圈叉叉</a>
-<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800" href="https://g.co/gemini/share/c98c923e45c1" target="_blank" onclick="handleLinkClick()"><span class="material-symbols-outlined text-sm opacity-70">flight</span>飛機射擊</a>
+<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/5361b0b4f941')"><span class="material-symbols-outlined text-sm opacity-70">circle</span>小精靈 (Pac-Man)</a>
+<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/6643cce876ca')"><span class="material-symbols-outlined text-sm opacity-70">close</span>圈圈叉叉</a>
+<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/c98c923e45c1')"><span class="material-symbols-outlined text-sm opacity-70">flight</span>飛機射擊</a>
 </div>
 </div>
 
@@ -90,7 +90,7 @@ body{font-family:'Noto Sans TC',sans-serif;overflow-x:hidden}.glass-scroll::-web
 <div class="w-full h-px bg-gradient-to-r from-transparent via-gray-400/30 to-transparent"></div>
 <footer class="text-center text-xs text-gray-600 space-y-1">
 <p>Copyright © 2025 阿信的Gemini Canvas實驗室</p>
-<p>All Rights Reserved. Ver1141120</p>
+<p>All Rights Reserved. Ver1141120-5</p>
 </footer>
 </div>
 </main>
@@ -98,9 +98,34 @@ body{font-family:'Noto Sans TC',sans-serif;overflow-x:hidden}.glass-scroll::-web
 let isPlaying=false;let synth=null;let loop=null;async function initAudio(){if(!synth){await Tone.start();synth=new Tone.PolySynth(Tone.Synth,{oscillator:{type:"sine"},envelope:{attack:2,decay:1,sustain:0.3,release:4},volume:-10}).toDestination();const chords=[["C4","E4","G4"],["D4","F4","A4"],["E4","G4","B4"],["F4","A4","C5"]];let index=0;loop=new Tone.Loop(time=>{synth.triggerAttackRelease(chords[index%chords.length],"4n",time);index++},"2n");Tone.Transport.bpm.value=60}}
 async function toggleMusic(){const icon=document.getElementById('musicIcon');const text=document.getElementById('musicText');if(!isPlaying){try{await initAudio();Tone.Transport.start();if(loop)loop.start(0);isPlaying=true;icon.innerText='music_note';text.innerText='暫停背景音樂';icon.classList.add('text-pink-600')}catch(e){console.error("Audio failed to start",e)}}else{stopMusicActions()}}
 function stopMusicActions(){if(isPlaying){Tone.Transport.stop();if(loop)loop.stop();if(synth)synth.releaseAll();isPlaying=false;const icon=document.getElementById('musicIcon');const text=document.getElementById('musicText');icon.innerText='music_off';text.innerText='播放背景音樂';icon.classList.remove('text-pink-600')}}
-function handleLinkClick(){if(isPlaying){stopMusicActions()}}
 function toggleDropdown(id){const content=document.getElementById(`dropdown-${id}`);const arrow=document.getElementById(`arrow-${id}`);const allContents=document.querySelectorAll('.dropdown-content');const allArrows=document.querySelectorAll('[id^="arrow-"]');const isOpen=content.classList.contains('open');allContents.forEach(el=>el.classList.remove('open'));allArrows.forEach(el=>el.style.transform='rotate(0deg)');if(!isOpen){content.classList.add('open');arrow.style.transform='rotate(180deg)'}}
+
+// 連結開啟邏輯：包含 LINE 強制外連 與 FB 標準開啟
+function openLink(event, url) {
+    event.preventDefault(); // 阻止預設行為
+    
+    // 停止音樂
+    if(isPlaying){stopMusicActions();}
+
+    const ua = navigator.userAgent;
+    
+    // 1. 針對 LINE 瀏覽器：強制加上參數跳轉到 Chrome/Safari
+    if (ua.includes("Line")) {
+        if (url.includes("?")) {
+            url += "&openExternalBrowser=1";
+        } else {
+            url += "?openExternalBrowser=1";
+        }
+    }
+    // 2. 針對 Facebook / Instagram：它們不支援強制跳轉，但我們記錄下來，並使用標準新視窗開啟
+    else if (ua.includes("FBAN") || ua.includes("FBAV") || ua.includes("Instagram")) {
+        // FB 內建瀏覽器通常會攔截 window.open，但這是目前唯一可行的方法
+        console.log("User is on Facebook/Instagram, attempting window.open");
+    }
+
+    // 統一使用 JavaScript 開啟新視窗 (相容性最高)
+    window.open(url, '_blank', 'noopener,noreferrer');
+}
 </script>
 </body>
 </html>
-
