@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿信的 Gemini Canvas 實驗室</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Google Fonts: Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 引入 Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        /* 自定義玻璃擬態效果 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 簡單的進場動畫 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- 標題區 -->
+        <header class="text-center mb-12 animate-fade-in">
+            <div class="inline-block p-4 rounded-full bg-white/10 mb-4 shadow-lg border border-white/20">
+                <i data-lucide="bot" class="w-12 h-12 text-teal-300"></i>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-200 to-purple-200 mb-2">
+                阿信的 Gemini Canvas 實驗室
+            </h1>
+            <p class="text-slate-300 text-lg">AI 協作開發旅程記錄</p>
+        </header>
+
+        <!-- 故事階段區 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            
+            <!-- 階段 1 -->
+            <div class="glass-card rounded-2xl p-6 hover:bg-white/15 transition duration-300 animate-fade-in delay-100 opacity-0">
+                <div class="flex items-start gap-4">
+                    <div class="bg-pink-500/20 p-3 rounded-xl text-pink-300 shrink-0">
+                        <i data-lucide="gamepad-2" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-pink-200">1. 遊戲起源</h3>
+                        <p class="text-slate-200 leading-relaxed text-justify">
+                            起初只是好玩，也為了看看AI的能力，一切從小遊戲開始，圈圈叉叉(你一定有玩過)、小精靈(懂得可能有點年紀哈)、飛機射擊，越做越複雜，也驚嘆AI的能力！
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 階段 2 -->
+            <div class="glass-card rounded-2xl p-6 hover:bg-white/15 transition duration-300 animate-fade-in delay-200 opacity-0">
+                <div class="flex items-start gap-4">
+                    <div class="bg-orange-500/20 p-3 rounded-xl text-orange-300 shrink-0">
+                        <i data-lucide="pizza" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-orange-200">2. 生活難題</h3>
+                        <p class="text-slate-200 leading-relaxed text-justify">
+                            某天想到每次都要為了吃什麼而傷腦筋，要吃什麼？轉盤 因應而生，此刻AI算是有其用處，可以解決人類日常生活問題！
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 階段 3 -->
+            <div class="glass-card rounded-2xl p-6 hover:bg-white/15 transition duration-300 animate-fade-in delay-300 opacity-0">
+                <div class="flex items-start gap-4">
+                    <div class="bg-blue-500/20 p-3 rounded-xl text-blue-300 shrink-0">
+                        <i data-lucide="layout-grid" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-blue-200">3. 整合應用</h3>
+                        <p class="text-slate-200 leading-relaxed text-justify">
+                            程式開始變多了，各自有其連結，零散的不方便使用，為了整合在一起，於是用AI做網頁，有了選單方便點選使用。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 階段 4 -->
+            <div class="glass-card rounded-2xl p-6 hover:bg-white/15 transition duration-300 animate-fade-in delay-400 opacity-0">
+                <div class="flex items-start gap-4">
+                    <div class="bg-green-500/20 p-3 rounded-xl text-green-300 shrink-0">
+                        <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-green-200">4. 教育轉向</h3>
+                        <p class="text-slate-200 leading-relaxed text-justify">
+                            想想好像「不務正業」，那再來開發一些「教學」類的程式吧！英語單字、九九乘法。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 階段 5 -->
+            <div class="glass-card rounded-2xl p-6 md:col-span-2 hover:bg-white/15 transition duration-300 animate-fade-in delay-500 opacity-0">
+                <div class="flex items-start gap-4">
+                    <div class="bg-purple-500/20 p-3 rounded-xl text-purple-300 shrink-0">
+                        <i data-lucide="github" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-purple-200">5. 固定據點</h3>
+                        <p class="text-slate-200 leading-relaxed text-justify">
+                            用AI做網頁，每次更新就產生新的連結，這樣也不是辦法，網站勢必要固定的。在AI中查詢得知Github網頁空間的使用，終於有一個固定網址了。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 宣告成立 -->
+        <div class="text-center py-8 animate-fade-in delay-500 opacity-0">
+            <span class="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-bold text-lg shadow-lg shadow-teal-500/30 tracking-wider">
+                阿信的Gemini Canvas實驗室 正式成立！
+            </span>
+        </div>
+
+        <!-- 更新記錄區 -->
+        <div class="mt-12 animate-fade-in delay-500 opacity-0">
+            <div class="flex items-center gap-3 mb-6">
+                <i data-lucide="history" class="w-6 h-6 text-slate-400"></i>
+                <h2 class="text-2xl font-bold text-white">更新記錄</h2>
+            </div>
+            
+            <p class="text-slate-400 mb-6 italic border-l-4 border-slate-600 pl-4">
+                之前沒有特別記，以下開始認真記錄：
+            </p>
+
+            <div class="relative border-l border-slate-600 ml-3 space-y-8 pb-12">
+                
+                <!-- Ver 1141124 -->
+                <div class="ml-8 relative">
+                    <span class="absolute -left-[41px] top-1 bg-slate-900 border-2 border-teal-400 w-5 h-5 rounded-full"></span>
+                    <h4 class="text-xl font-bold text-teal-300 mb-2">Ver 1141124</h4>
+                    <div class="glass-card p-4 rounded-xl">
+                        <ul class="space-y-2 text-slate-200">
+                            <li class="flex gap-2">
+                                <span class="text-teal-400 font-bold">●</span>
+                                <span>【教學應用】英語單字賽車：改版擴充單字數(GEPT Kids 685字)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ver 1141121 -->
+                <div class="ml-8 relative">
+                    <span class="absolute -left-[41px] top-1 bg-slate-900 border-2 border-blue-400 w-5 h-5 rounded-full"></span>
+                    <h4 class="text-xl font-bold text-blue-300 mb-2">Ver 1141121</h4>
+                    <div class="glass-card p-4 rounded-xl">
+                        <ul class="space-y-2 text-slate-200">
+                            <li class="flex gap-2">
+                                <span class="text-blue-400 font-bold">●</span>
+                                <span>【教學應用】新增：新手魔術方塊教學</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ver 1141120 -->
+                <div class="ml-8 relative">
+                    <span class="absolute -left-[41px] top-1 bg-slate-900 border-2 border-purple-400 w-5 h-5 rounded-full"></span>
+                    <h4 class="text-xl font-bold text-purple-300 mb-2">Ver 1141120</h4>
+                    <div class="glass-card p-4 rounded-xl">
+                        <ul class="space-y-2 text-slate-200">
+                            <li class="flex gap-2">
+                                <span class="text-purple-400 font-bold">●</span>
+                                <span>網站改版：使用(Gemini動態檢視)重新製作網頁，並申請github網站固定空間。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ver 1141118 -->
+                <div class="ml-8 relative">
+                    <span class="absolute -left-[41px] top-1 bg-slate-900 border-2 border-orange-400 w-5 h-5 rounded-full"></span>
+                    <h4 class="text-xl font-bold text-orange-300 mb-2">Ver 1141118</h4>
+                    <div class="glass-card p-4 rounded-xl">
+                        <ul class="space-y-2 text-slate-200">
+                            <li class="flex gap-2">
+                                <span class="text-orange-400 font-bold">●</span>
+                                <span>【教學應用】新增：9x9地球保衛戰</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-orange-400 font-bold">●</span>
+                                <span>【生活實用】要吃什麼？轉盤：食物增加共160種，可以順便搜尋地圖。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ver 1141117 -->
+                <div class="ml-8 relative">
+                    <span class="absolute -left-[41px] top-1 bg-slate-900 border-2 border-pink-400 w-5 h-5 rounded-full"></span>
+                    <h4 class="text-xl font-bold text-pink-300 mb-2">Ver 1141117</h4>
+                    <div class="glass-card p-4 rounded-xl">
+                        <ul class="space-y-2 text-slate-200">
+                            <li class="flex gap-2">
+                                <span class="text-pink-400 font-bold">●</span>
+                                <span>【教學應用】新增：英語單字賽車</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            
+            <footer class="text-center text-slate-500 text-sm py-8">
+                 © 2025 阿信的 Gemini Canvas 實驗室
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // 初始化 Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
