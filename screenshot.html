@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿信的程式百寶架</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #1a202c; /* Fallback */
+            background-image: radial-gradient(circle at 50% 0%, #2d3748 0%, #1a202c 70%);
+        }
+        
+        /* 3D Book Effect */
+        .book-container {
+            perspective: 1000px;
+        }
+        
+        .book {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* Spine effect on the left */
+        .book::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 12px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0.3), rgba(0,0,0,0.1));
+            z-index: 10;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .book:hover {
+            transform: translateY(-15px) scale(1.05) rotateX(5deg);
+            box-shadow: 0 25px 30px rgba(0,0,0,0.6), 0 0 15px rgba(66, 153, 225, 0.4);
+            z-index: 20;
+        }
+
+        /* Shelf styling */
+        .shelf {
+            background: linear-gradient(180deg, #4a5568 0%, #2d3748 100%);
+            border-top: 4px solid #718096;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
+        .shelf::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 100%);
+        }
+
+        .category-badge {
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-100 overflow-x-hidden pb-20">
+
+    <!-- Header Section -->
+    <header class="text-center py-12 px-4 relative">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+            <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-500/10 blur-[100px] rounded-full"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/10 blur-[100px] rounded-full"></div>
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-white to-purple-300 drop-shadow-lg">
+            程式截圖一覽
+        </h1>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 space-y-20">
+
+        <!-- Shelf 1: Teaching (E) -->
+        <section class="shelf-group">
+            <div class="flex items-center gap-4 mb-2 ml-4">
+                <div class="bg-blue-600 w-2 h-8 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.6)]"></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-100 flex items-center gap-2">
+                    <span>教學應用區</span>
+                    <span class="text-xs bg-blue-900 text-blue-300 px-2 py-1 rounded border border-blue-700">Category E</span>
+                </h2>
+            </div>
+            
+            <!-- Books container -->
+            <div class="px-4 pt-8 pb-0 flex flex-wrap gap-8 items-end justify-start">
+                
+                <!-- E001 -->
+                <div class="group w-[140px] md:w-[180px] flex-shrink-0 book-container text-center">
+                    <a href="https://g.co/gemini/share/c30486f4767a" target="_blank" class="block book rounded-md overflow-hidden bg-gray-800 aspect-[9/16] cursor-pointer border-r-4 border-gray-900">
+                        <img src="E001.jpg" 
+                             alt="E001" 
+                             class="w-full h-full object-cover opacity-90 group-hover:opacity-100"
+                             onerror="this.onerror=null; this.src='https://placehold.co/180x320/2d3748/a0aec0?text=E001\n圖片請放同目錄';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 left-0 right-0 text-xs font-bold text-white px-1">E001</div>
+                    </a>
+                    <h3 class="mt-4 text-sm md:text-base font-bold text-gray-300 group-hover:text-blue-300 transition-colors">英語單字賽車</h3>
+                </div>
+
+                <!-- E002 -->
+                <div class="group w-[140px] md:w-[180px] flex-shrink-0 book-container text-center">
+                    <a href="https://g.co/gemini/share/a7daaf74be63" target="_blank" class="block book rounded-md overflow-hidden bg-gray-800 aspect-[9/16] cursor-pointer border-r-4 border-gray-900">
+                        <img src="E002.jpg" 
+                             alt="E002" 
+                             class="w-full h-full object-cover opacity-90 group-hover:opacity-100"
+                             onerror="this.onerror=null; this.src='https://placehold.co/180x320/2d3748/a0aec0?text=E002\n圖片請放同目錄';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 left-0 right-0 text-xs font-bold text-white px-1">E002</div>
+                    </a>
+                    <h3 class="mt-4 text-sm md:text-base font-bold text-gray-300 group-hover:text-blue-300 transition-colors">9x9地球保衛戰</h3>
+                </div>
+
+                <!-- E003 -->
+                <div class="group w-[140px] md:w-[180px] flex-shrink-0 book-container text-center">
+                    <a href="https://g.co/gemini/share/c046ff3f1d06" target="_blank" class="block book rounded-md overflow-hidden bg-gray-800 aspect-[9/16] cursor-pointer border-r-4 border-gray-900">
+                        <img src="E003.jpg" 
+                             alt="E003" 
+                             class="w-full h-full object-cover opacity-90 group-hover:opacity-100"
+                             onerror="this.onerror=null; this.src='https://placehold.co/180x320/2d3748/a0aec0?text=E003\n圖片請放同目錄';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 left-0 right-0 text-xs font-bold text-white px-1">E003</div>
+                    </a>
+                    <h3 class="mt-4 text-sm md:text-base font-bold text-gray-300 group-hover:text-blue-300 transition-colors">魔術方塊教學</h3>
+                </div>
+
+            </div>
+            <!-- The physical shelf -->
+            <div class="shelf h-6 w-full mt-2 rounded-sm"></div>
+        </section>
+
+
+        <!-- Shelf 2: Lifestyle (L) -->
+        <section class="shelf-group">
+            <div class="flex items-center gap-4 mb-2 ml-4">
+                <div class="bg-green-600 w-2 h-8 rounded-full shadow-[0_0_10px_rgba(22,163,74,0.6)]"></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-green-100 flex items-center gap-2">
+                    <span>生活實用區</span>
+                    <span class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded border border-green-700">Category L</span>
+                </h2>
+            </div>
+            
+            <!-- Books container -->
+            <div class="px-4 pt-8 pb-0 flex flex-wrap gap-8 items-end justify-start">
+                
+                <!-- L001 -->
+                <div class="group w-[140px] md:w-[180px] flex-shrink-0 book-container text-center">
+                    <a href="https://g.co/gemini/share/3b0f849c3d1b" target="_blank" class="block book rounded-md overflow-hidden bg-gray-800 aspect-[9/16] cursor-pointer border-r-4 border-gray-900">
+                        <img src="L001.jpg" 
+                             alt="L001" 
+                             class="w-full h-full object-cover opacity-90 group-hover:opacity-100"
+                             onerror="this.onerror=null; this.src='https://placehold.co/180x320/2d3748/a0aec0?text=L001\n圖片請放同目錄';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 left-0 right-0 text-xs font-bold text-white px-1">L001</div>
+                    </a>
+                    <h3 class="mt-4 text-sm md:text-base font-bold text-gray-300 group-hover:text-green-300 transition-colors">要吃什麼？轉盤</h3>
+                </div>
+
+            </div>
+            <!-- The physical shelf -->
+            <div class="shelf h-6 w-full mt-2 rounded-sm"></div>
+        </section>
+
+
+        <!-- Shelf 3: Games (G) -->
+        <section class="shelf-group">
+            <div class="flex items-center gap-4 mb-2 ml-4">
+                <div class="bg-pink-600 w-2 h-8 rounded-full shadow-[0_0_10px_rgba(219,39,119,0.6)]"></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-pink-100 flex items-center gap-2">
+                    <span>遊戲專用區</span>
+                    <span class="text-xs bg-pink-900 text-pink-300 px-2 py-1 rounded border border-pink-700">Category G</span>
+                </h2>
+            </div>
+            
+            <!-- Books container -->
+            <div class="px-4 pt-8 pb-0 flex flex-wrap gap-8 items-end justify-start">
+                
+                <!-- G001 -->
+                <div class="group w-[140px] md:w-[180px] flex-shrink-0 book-container text-center">
+                    <a href="https://g.co/gemini/share/5361b0b4f941" target="_blank" class="block book rounded-md overflow-hidden bg-gray-800 aspect-[9/16] cursor-pointer border-r-4 border-gray-900">
+                        <img src="G001.jpg" 
+                             alt="G001" 
+                             class="w-full h-full object-cover opacity-90 group-hover:opacity-100"
+                             onerror="this.onerror=null; this.src='https://placehold.co/180x320/2d3748/a0aec0?text=G001\n圖片請放同目錄';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 left-0 right-0 text-xs font-bold text-white px-1">G001</div>
+                    </a>
+                    <h3 class="mt-4 text-sm md:text-base font-bold text-gray-300 group-hover:text-pink-300 transition-colors">小精靈</h3>
+                </div>
+
+                <!-- G002 -->
+                <div class="group w-[140px] md:w-[180px] flex-shrink-0 book-container text-center">
+                    <a href="https://g.co/gemini/share/6643cce876ca" target="_blank" class="block book rounded-md overflow-hidden bg-gray-800 aspect-[9/16] cursor-pointer border-r-4 border-gray-900">
+                        <img src="G002.jpg" 
+                             alt="G002" 
+                             class="w-full h-full object-cover opacity-90 group-hover:opacity-100"
+                             onerror="this.onerror=null; this.src='https://placehold.co/180x320/2d3748/a0aec0?text=G002\n圖片請放同目錄';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 left-0 right-0 text-xs font-bold text-white px-1">G002</div>
+                    </a>
+                    <h3 class="mt-4 text-sm md:text-base font-bold text-gray-300 group-hover:text-pink-300 transition-colors">圈圈叉叉</h3>
+                </div>
+
+                <!-- G003 -->
+                <div class="group w-[140px] md:w-[180px] flex-shrink-0 book-container text-center">
+                    <a href="https://g.co/gemini/share/c98c923e45c1" target="_blank" class="block book rounded-md overflow-hidden bg-gray-800 aspect-[9/16] cursor-pointer border-r-4 border-gray-900">
+                        <img src="G003.jpg" 
+                             alt="G003" 
+                             class="w-full h-full object-cover opacity-90 group-hover:opacity-100"
+                             onerror="this.onerror=null; this.src='https://placehold.co/180x320/2d3748/a0aec0?text=G003\n圖片請放同目錄';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 left-0 right-0 text-xs font-bold text-white px-1">G003</div>
+                    </a>
+                    <h3 class="mt-4 text-sm md:text-base font-bold text-gray-300 group-hover:text-pink-300 transition-colors">飛機射擊</h3>
+                </div>
+
+            </div>
+            <!-- The physical shelf -->
+            <div class="shelf h-6 w-full mt-2 rounded-sm"></div>
+        </section>
+
+    </main>
+
+    <footer class="mt-20 py-8 text-center text-yellow-400 text-sm border-t border-gray-800">
+        <p>Copyright © 2025 阿信的Gemini Canvas實驗室<br>All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
