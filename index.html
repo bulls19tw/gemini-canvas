@@ -53,7 +53,7 @@ body{font-family:'Noto Sans TC',sans-serif;overflow-x:hidden}.glass-scroll::-web
 <span class="material-symbols-outlined text-gray-600 transition-transform duration-300" id="arrow-edu">expand_more</span>
 </button>
 <div class="dropdown-content flex flex-col gap-2 mt-2 ml-2 border-l-2 border-white/30 pl-4" id="dropdown-edu">
-<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/ec047d04a0dd')"><span class="material-symbols-outlined text-sm opacity-70">directions_car</span>英語單字賽車</a>
+<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/c30486f4767a')"><span class="material-symbols-outlined text-sm opacity-70">directions_car</span>英語單字賽車</a>
 <a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/a7daaf74be63')"><span class="material-symbols-outlined text-sm opacity-70">public</span>9x9地球保衛戰</a>
 <a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/c046ff3f1d06')"><span class="material-symbols-outlined text-sm opacity-70">grid_view</span>新手魔術方塊教學</a>
 </div>
@@ -73,61 +73,4 @@ body{font-family:'Noto Sans TC',sans-serif;overflow-x:hidden}.glass-scroll::-web
 </div>
 
 <div class="w-full">
-<button class="w-full glass-panel bg-gradient-to-r from-indigo-500/10 to-purple-500/10 hover:from-indigo-500/20 hover:to-purple-500/20 border-white/50 rounded-xl p-4 flex items-center justify-between transition-all duration-300 hover:shadow-lg group" onclick="toggleDropdown('games')">
-<div class="flex items-center gap-3">
-<div class="bg-white/60 p-2 rounded-full shadow-sm"><span class="material-symbols-outlined text-indigo-600">sports_esports</span></div>
-<span class="font-bold text-lg text-gray-800">遊戲專用</span>
-</div>
-<span class="material-symbols-outlined text-gray-600 transition-transform duration-300" id="arrow-games">expand_more</span>
-</button>
-<div class="dropdown-content flex flex-col gap-2 mt-2 ml-2 border-l-2 border-white/30 pl-4" id="dropdown-games">
-<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/5361b0b4f941')"><span class="material-symbols-outlined text-sm opacity-70">circle</span>小精靈 (Pac-Man)</a>
-<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/6643cce876ca')"><span class="material-symbols-outlined text-sm opacity-70">close</span>圈圈叉叉</a>
-<a class="block p-3 rounded-lg hover:bg-white/40 transition-colors flex items-center gap-2 text-gray-800 cursor-pointer" onclick="openLink(event, 'https://g.co/gemini/share/c98c923e45c1')"><span class="material-symbols-outlined text-sm opacity-70">flight</span>飛機射擊</a>
-</div>
-</div>
-
-</div>
-<div class="w-full h-px bg-gradient-to-r from-transparent via-gray-400/30 to-transparent"></div>
-<footer class="text-center text-xs text-gray-600 space-y-1">
-<p>Copyright © 2025 阿信的Gemini Canvas實驗室</p>
-<p>All Rights Reserved. Ver1141121</p>
-</footer>
-</div>
-</main>
-<script>
-let isPlaying=false;let synth=null;let loop=null;async function initAudio(){if(!synth){await Tone.start();synth=new Tone.PolySynth(Tone.Synth,{oscillator:{type:"sine"},envelope:{attack:2,decay:1,sustain:0.3,release:4},volume:-10}).toDestination();const chords=[["C4","E4","G4"],["D4","F4","A4"],["E4","G4","B4"],["F4","A4","C5"]];let index=0;loop=new Tone.Loop(time=>{synth.triggerAttackRelease(chords[index%chords.length],"4n",time);index++},"2n");Tone.Transport.bpm.value=60}}
-async function toggleMusic(){const icon=document.getElementById('musicIcon');const text=document.getElementById('musicText');if(!isPlaying){try{await initAudio();Tone.Transport.start();if(loop)loop.start(0);isPlaying=true;icon.innerText='music_note';text.innerText='暫停背景音樂';icon.classList.add('text-pink-600')}catch(e){console.error("Audio failed to start",e)}}else{stopMusicActions()}}
-function stopMusicActions(){if(isPlaying){Tone.Transport.stop();if(loop)loop.stop();if(synth)synth.releaseAll();isPlaying=false;const icon=document.getElementById('musicIcon');const text=document.getElementById('musicText');icon.innerText='music_off';text.innerText='播放背景音樂';icon.classList.remove('text-pink-600')}}
-function toggleDropdown(id){const content=document.getElementById(`dropdown-${id}`);const arrow=document.getElementById(`arrow-${id}`);const allContents=document.querySelectorAll('.dropdown-content');const allArrows=document.querySelectorAll('[id^="arrow-"]');const isOpen=content.classList.contains('open');allContents.forEach(el=>el.classList.remove('open'));allArrows.forEach(el=>el.style.transform='rotate(0deg)');if(!isOpen){content.classList.add('open');arrow.style.transform='rotate(180deg)'}}
-
-// 連結開啟邏輯：針對 FB/IG 改用「原地跳轉」策略
-function openLink(event, url) {
-    event.preventDefault(); 
-    
-    if(isPlaying){stopMusicActions();}
-
-    const ua = navigator.userAgent;
-    
-    // 1. LINE: 強制外連 (維持不變)
-    if (ua.includes("Line")) {
-        if (url.includes("?")) {
-            url += "&openExternalBrowser=1";
-        } else {
-            url += "?openExternalBrowser=1";
-        }
-        window.open(url, '_blank', 'noopener,noreferrer');
-    }
-    // 2. Facebook / Instagram: 改用「當前頁面跳轉」
-    // 因為 FB 會阻擋 window.open (彈窗)，但不會阻擋 location.href
-    else if (ua.includes("FBAN") || ua.includes("FBAV") || ua.includes("Instagram")) {
-        window.location.href = url; 
-    }
-    // 3. 其他正常瀏覽器: 開新視窗
-    else {
-        window.open(url, '_blank', 'noopener,noreferrer');
-    }
-}
-</script>
-</body>
-</html>
+<button class="w-full glass-panel bg-gradient-to-r from-indigo-500/10 to-purple-
